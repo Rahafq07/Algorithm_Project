@@ -62,11 +62,11 @@ public class Graph {
      * @param allEdges all Edges in LinkedList
      * @return true if there an edge between source and destination,and false if there is not.
      */
-    public boolean isConnected(int src, int dest, LinkedList<Edge>[] allEdges) {
+    public boolean isConnected(int source, int destination, LinkedList<Edge>[] allEdges) {
         
         for (LinkedList<Edge> i : allEdges) {
             for (Edge edge : i) {
-                if ((edge.source == src && edge.destination == dest) || (edge.source == dest && edge.destination == src)) {
+                if ((edge.source == source && edge.destination == destination) || (edge.source == destination && edge.destination == source)) {
                     return true;
                 }
             }
