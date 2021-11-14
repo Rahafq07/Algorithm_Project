@@ -1,7 +1,7 @@
 
 import java.util.LinkedList;
 
-/***
+/**
  * <h1>Graph Class</h1>
  * This is the Graph class which has vertices,edges and LinkedList from type Edge as instance variable.
  * 
@@ -15,7 +15,7 @@ public class Graph {
     int edges; // number of edges in graph
     LinkedList<Edge>[] adjacencylist; // LinkedList from Edge 
 
-    /***
+    /**
      * This is a  graph constructor that indicates parameters and initialize adjacency lists for all the vertices.
      * 
      * @param vertices number of vertices.
@@ -33,7 +33,7 @@ public class Graph {
         }
     }
 
-    /***
+    /**
      * This is the addEdge method which Create an object of type Edge with new edge from source to destination  
      * then add First edge in adjacency list and creat new Edge from destination to the source 
      * then add it in adjacency list for undirected graph.
@@ -54,7 +54,7 @@ public class Graph {
 
     }
 
-    /***
+    /**
      * This is the isConnected method which checks if the edge is already existed or not.
      * 
      * @param source source vertex.
@@ -75,30 +75,3 @@ public class Graph {
     }
 
 }
-
-/***
- * <h1>Edge Class</h1>
- * This is the Graph class which has source,destination and weight as instance variable.
- * 
- * @author Rahaf , sarah , Somayah 
- */
-class Edge { 
-
-    int source; // integer number represent the source
-    int destination; // integer number represent the destination
-    int weight; // the weight of edge
-
-    /***
-     * This is a Edge constructor that indicates parameters
-     * 
-     * @param source
-     * @param destination
-     * @param weight 
-     */
-    public Edge(int source, int destination, int weight) { // Edge contractor to add new Edge
-        this.source = source;
-        this.destination = destination;
-        this.weight = weight;
-    }
-}
-
