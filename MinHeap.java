@@ -1,5 +1,5 @@
 
-/***
+/**
  * <h1>MinHeap Class</h1>
  * This is the MinHeap class which has capacity,currentSize, minHeap from type HeapNode and array of indexes as instance variable.
  * 
@@ -15,10 +15,10 @@ class MinHeap {
     HeapNode[] miginHeap; //array of type Heap Node
     int[] indexes; //the indexes will be used to decrease the key
 
-    /***
-     * This is a MinHeap constructor that indicates parameters and create new Heap Node with capacity + 1
-     * 
-     * @param capacity 
+    /**
+     * This is a MinHeap constructor that indicates parameters and create new Heap Node with capacity by 1.
+     *
+     * @param capacity the capacity of the Minheap. 
      */
     public MinHeap(int capacity) {
 
@@ -33,10 +33,10 @@ class MinHeap {
 
     }
 
-    /***
-     * This is the insert method which insert a node into the heap
+    /**
+     * This is the insert method which insert a node into the heap.
      * 
-     * @param x 
+     * @param x the node that want to insert it to the heap.
      */
     public void insert(HeapNode x) {
         
@@ -48,10 +48,10 @@ class MinHeap {
         
     }
 
-    /***
-     * This is the bubbleUp method which heapify the node at pos 
+    /**
+     * This is the bubbleUp method which heapify the node at pos .
      * 
-     * @param pos 
+     * @param pos the index of node.
      */
     public void bubbleUp(int pos) {
         
@@ -71,10 +71,10 @@ class MinHeap {
         }
     }
 
-    /***
-     * This is the extractMin method which update the indexes[] and move the last node to the top
+    /**
+     * This is the extractMin method which update the indexes[] and move the last node to the top.
      * 
-     * @return min
+     * @return min node
      */
     public HeapNode extractMin() {
         
@@ -90,10 +90,10 @@ class MinHeap {
         
     }
 
-    /***
-     * This is the sinkDown method which make the parent node larger than its tow children 
+    /**
+     * This is the sinkDown method which make the parent node larger than its tow children .
      * 
-     * @param k 
+     * @param k node index.
      */
     public void sink(int k) {
         
@@ -120,11 +120,11 @@ class MinHeap {
     
     }
 
-    /***
-     * This is the swap method which swap two nodes of the heap
+    /**
+     * This is the swap method which swap two nodes of the heap.
      * 
-     * @param a
-     * @param b 
+     * @param a vertex a
+     * @param b vertex b
      */
     public void swap(int a, int b) {
         
@@ -134,8 +134,8 @@ class MinHeap {
         
     }
 
-    /***
-     * This is the isEmpty method which check if th heap is Empty or not
+    /**
+     * This is the isEmpty method which check if th heap is Empty or not.
      * 
      * @return currentSize == 0
      */
@@ -143,10 +143,10 @@ class MinHeap {
         return currentSize == 0;
     }
 
-    /***
-     * This is the heapSize method which return the heap size
+    /**
+     * This is the heapSize method which return the heap size.
      * 
-     * @return currentSize
+     * @return currentSize of heap.
      */
     public int heapSize() {
         return currentSize;
