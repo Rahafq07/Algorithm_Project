@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * @version 8.2
  * @since 11-11-2021
  */
-class Graph {
+public class Graph {
 
     int vertices; // number of node in graph 
     int edges; // number of edges in graph
@@ -18,10 +18,10 @@ class Graph {
     /***
      * This is a  graph constructor that indicates parameters and initialize adjacency lists for all the vertices.
      * 
-     * @param vertices
-     * @param edges 
+     * @param vertices number of vertices.
+     * @param edges number of edges.
      */
-    Graph(int vertices, int edges) {
+    public Graph(int vertices, int edges) {
         
         this.vertices = vertices;
         this.edges = edges;
@@ -38,9 +38,9 @@ class Graph {
      * then add First edge in adjacency list and creat new Edge from destination to the source 
      * then add it in adjacency list for undirected graph.
      * 
-     * @param source
-     * @param destination
-     * @param weight 
+     * @param source source vertex.
+     * @param destination destination vertex.
+     * @param weight weight of edge between source and destination.
      */
     public void addEdge(int source, int destination, int weight) {
         
@@ -55,12 +55,12 @@ class Graph {
     }
 
     /***
-     * This is the isConnected method which checks if the edge is already existed or not
+     * This is the isConnected method which checks if the edge is already existed or not.
      * 
-     * @param src
-     * @param dest
-     * @param allEdges
-     * @return 
+     * @param source source vertex.
+     * @param destination destination vertex.
+     * @param allEdges all Edges in LinkedList
+     * @return true if there an edge between source and destination,and false if there is not.
      */
     public boolean isConnected(int src, int dest, LinkedList<Edge>[] allEdges) {
         
@@ -75,30 +75,3 @@ class Graph {
     }
 
 }
-
-/***
- * <h1>Edge Class</h1>
- * This is the Graph class which has source,destination and weight as instance variable.
- * 
- * @author Rahaf , sarah , Somayah 
- */
-class Edge { 
-
-    int source; // integer number represent the source
-    int destination; // integer number represent the destination
-    int weight; // the weight of edge
-
-    /***
-     * This is a Edge constructor that indicates parameters
-     * 
-     * @param source
-     * @param destination
-     * @param weight 
-     */
-    public Edge(int source, int destination, int weight) { // Edge contractor to add new Edge
-        this.source = source;
-        this.destination = destination;
-        this.weight = weight;
-    }
-}
-
