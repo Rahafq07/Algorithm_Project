@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 import javafx.util.Pair;
 
-/***
+/**
  * <h1>Comparison between Algorithms</h1>
  * 
  * the program will Compare between Kruskal Algorithm ,
@@ -23,12 +23,12 @@ public class NewMain {
 
     static Graph graph;
     
-    /***
+    /**
      * This is the main method which print the start sentence and takes the case defined by the user 
      * then directs the selection using switch to specify the number of vertexs and edges, 
      * the sends it to make a graph and then prints each algorithm with a minimum spanning tree and its execution time.
      * 
-     * @param args 
+     * @param args is the parameter to the main Method.
      */
     public static void main(String[] args) {
 
@@ -134,13 +134,13 @@ public class NewMain {
 
     }
 
-    /***
+    /**
      * This is the make_graph method which Generates random numbers of vertices (Source, Destination) and weight,
      * then sends them to the GRAPH class in order to create an edge.
      * 
-     * @param graph 
+     * @param graph the graph that contain vertices and edges.
      */
-    private static void make_graph(Graph graph) {
+    public static void make_graph(Graph graph) {
 
         // instance of Random class
         Random random = new Random();
@@ -173,14 +173,14 @@ public class NewMain {
 
     }
     
-    /***
+    /**
      * This is the Kruskal method which add all the edges to the priority Queue 
      * and arrange them according to weight, then add them to the linked list As long as it's not make a cycle
      * Also its calculate the Minimum Spanning Tree.
      * 
-     * @param graph 
+     * @param graph the graph that contain vertices and edges. 
      */
-    private static void Kruskal(Graph graph) {
+    public static void Kruskal(Graph graph) {
 
         
         LinkedList<Edge>[] allEdges = graph.adjacencylist.clone(); // modified data type from ArrayList to LinkedList
@@ -229,16 +229,16 @@ public class NewMain {
 
     }
 
-    /***
+    /**
      * This is the primPriority_Q method which Initialize all the keys to infinity and initialize setOFresult for all the vertices
      * And override the comparator to do the sorting based keys
      * And create the pair for the first index then add it to priority queue
      * And extract the min and iterate through all the adjacent vertices and update the keys
      * Also its calculate the Minimum Spanning Tree.
      * 
-     * @param graph 
+     * @param graph the graph that contain vertices and edges.
      */
-    private static void primPriority_Q(Graph graph) {
+    public static void primPriority_Q(Graph graph) {
 
         
         boolean[] mst = new boolean[graph.vertices];
@@ -313,14 +313,14 @@ public class NewMain {
         
     }
 
-    /***
+    /**
      * This is the primMinHeap method which add all the vertices to the Min Heap 
      * and extract the min, then iterate through all the adjacent vertices
      * Also its calculate the Minimum Spanning Tree.
      * 
-     * @param graph 
+     * @param graph the graph that contain vertices and edges.
      */
-    private static void primMinHeap(Graph graph) {
+    public static void primMinHeap(Graph graph) {
 
         
         boolean[] inHeap = new boolean[graph.vertices];
@@ -370,7 +370,7 @@ public class NewMain {
                     int newKey = edge.weight;
                     //check if updated key < existing key, if yes, update if
                     if (key[destination] > newKey) {
-                        decreaseKey(minHeap, newKey, destination);
+                        decKey(minHeap, newKey, destination);
                         //update the parent node for destination
                         setOFresult[destination].parent = extractedVertex;
                         setOFresult[destination].weight = newKey;
@@ -387,10 +387,10 @@ public class NewMain {
         System.out.println(cost);
     }
 
-    /***
+    /**
      * This is the makeSet method which Make a set that create a new element with a parent pointer to itself.
      * 
-     * @param parent 
+     * @param parent is an array of integer that contain a set of element with a parent pointer to itself.
      */
     public static void makeSet(int[] parent) {
         //Make set creating a new element with a parent pointer to itself.
@@ -399,13 +399,13 @@ public class NewMain {
         }
     }
 
-    /***
+    /**
      * This is the find method which return the vertex if found using chain of parent pointers
      * through the tree until an element is reached whose parent is itself.
      * 
-     * @param parent
-     * @param vertex
-     * @return vertex
+     * @param parent is an array of integer that contain a set of element with a parent pointer to itself.
+     * @param vertex  the vertex that we want to find.
+     * @return vertex the vertex that will return if found.
      */
     public static int find(int[] parent, int vertex) {
         //chain of parent pointers from x upwards through the tree
@@ -416,12 +416,12 @@ public class NewMain {
         return vertex;
     }
 
-    /***
+    /**
      * This is the union method which find x and y set parent then make x as parent of y.
      * 
-     * @param parent
-     * @param x
-     * @param y 
+     * @param parent is an array of integer that contain a set of element with a parent pointer to itself.
+     * @param x vertex x.
+     * @param y vertex y.
      */
     public static void union(int[] parent, int x, int y) {
         int x_set_parent = find(parent, x);
@@ -430,15 +430,15 @@ public class NewMain {
         parent[y_set_parent] = x_set_parent;
     }
 
-    /***
+    /**
      * This is the decreaseKey method which get the index of key that need to decrease,
-     * then get the node and update its value
+     * then get the node and update its value.
      * 
-     * @param minHeap
-     * @param newKey
-     * @param vertex 
+     * @param minHeap min heap that contain all vertex in graph.
+     * @param newKey the weight of the edge.
+     * @param vertex The vertex whose index needs to be decrease.
      */
-    public static void decreaseKey(MinHeap minHeap, int newKey, int vertex) {
+    public static void decKey(MinHeap minHeap, int newKey, int vertex) {
 
         //get the index which key's needs a decrease;
         int index = minHeap.indexes[vertex];
@@ -449,54 +449,4 @@ public class NewMain {
         minHeap.bubbleUp(index);
     }
 
-    /***
-     * This is the minKey method which return the min Key Index.
-     * 
-     * @param key
-     * @param mstSet
-     * @return 
-     */
-    public static int minKey(int[] key, boolean[] mstSet) {
-
-		// Initialize min value
-		int min = Integer.MAX_VALUE;
-		int minIndex = -1;
-
-		for(int v = 0; v < graph.vertices; v++) {
-			if(!mstSet[v] && key[v] <= min) {
-				min = key[v];
-				minIndex = v;
-			}
-		}
-
-		return minIndex;
-	}
 }
-
-/***
- * <h1>SetOfResult Class</h1>
- * This is the SetOfResult class which has parent and weight as instance variable.
- * 
- * @author Rahaf , sarah , Somayah 
- * @version 8.2
- * @since 11-11-2021
- */
-class SetOfResult {
-
-    int parent;
-    int weight;
-}
-
-/***
- * <h1>HeapNode Class</h1>
- * This is the HeapNode class which has vertex and key as instance variable.
- * 
- * @author Rahaf , sarah , Somayah 
- * @version 8.2
- * @since 11-11-2021 */
-class HeapNode {
-
-    int vertex;
-    int key;
-}
-
